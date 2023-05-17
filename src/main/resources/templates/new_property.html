@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Property</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style >
+    body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+     font-family: cursive;
+            background-image: url("/img/pic2.jpg");
+    
+}
+
+h2 {
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+label {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    width: 200px;
+    padding: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+    
+    </style>
+</head>
+<body>
+    <h2>Add Property</h2>
+    <form     th:action="@{/saveProperty}" method="post" th:object="${property}" >
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" th:field="*{id}" required>
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" th:field="*{price}" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" th:field="*{location}" required>
+        </div>
+        <div>
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="text" id="bedrooms" name="bedrooms" th:field="*{bedrooms}" required>
+        </div>
+        <div>
+            <label for="bathrooms">Bathrooms:</label>
+            <input type="text" id="bathrooms" name="bathrooms" th:field="*{bathrooms}" required>
+        </div>
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

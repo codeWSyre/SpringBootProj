@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Real Estate Management Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+	/* General styles */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	
+background-size: 100%;
+ background-repeat: no-repeat;
+  font-family: cursive;
+            background-image: url("/img/pic2.jpg");
+}
+
+/* Header styles */
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 20px;
+	text-align: center;
+}
+
+/* Navigation styles */
+nav {
+	background-color: #eee;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+	font-family: cursive;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+	font-family: cursive;
+}
+
+nav li {
+font-family: cursive;
+	display: inline-block;
+	font-family: cursive;
+}
+
+nav a {
+font-family: cursive;
+	display: block;
+	padding: 10px;
+	color: #333;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: #ddd;
+}
+
+/* Main content styles */
+main {
+	padding: 20px;
+}
+
+/* Footer styles */
+footer {
+	background-color: #333;
+	color: #fff;
+	padding: 10px;
+	text-align: center;
+	font-family: cursive;
+}
+
+/* Button styles */
+button {
+	background-color: #4CAF50;
+	color: white;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	font-family: cursive;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #3e8e41;
+}
+.button {
+  display: inline-block;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-family: cursive;
+}
+
+.button:hover {
+  background-color: #3e8e41;
+}
+
+	h1{
+	font-family: cursive;
+	font-size: xx-large;
+	
+	}
+	h2 {
+			color: black;
+			font-size: 32px;
+			font-weight: bold;
+			text-transform: uppercase;
+			letter-spacing: 3px;
+			background-color: silver;
+			font-family: cursive;
+			display: inline-block;
+			margin-left: 270px;
+			
+		}
+		p {
+			color: black;
+			font-size: 24px;
+			font-family: Georgia, serif;
+			line-height: 1.5;
+			font-style: italic;
+			background-color: silver;
+			display: inline-block;
+			margin-left: 270px;
+		}
+.logo {
+  display: flex;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.logo img {
+  max-width: 10%;
+  height: auto;
+  margin-right: 30px;
+   margin-left: 300px;
+}
+
+.logo h1 {
+  font-size: 40px;
+  margin: 0;
+  color: #fff;
+}
+.wrapper {
+  height: 100vh;
+  /*This part is important for centering*/
+  display: grid;
+  place-items: center;
+}
+
+.typing-demo {
+  width: 66ch;
+  animation: typing 4s steps(70), blink .5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+  font-size: 2em;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+}
+    
+@keyframes blink {
+  50% {
+    border-color: transparent
+  }
+}
+	.body-class{
+	background-color: green;
+	}	
+		
+	</style>
+
+</head>
+
+<body>
+	<header>
+    <div class="typing-demo">
+     Welcome To My Real Estate Management System.
+    </div>
+	</header>
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>		
+			<li><a th:href="@{/showUserForm}">Sign up</a></li>
+			<li><a th:href="@{/showLoginForm}">Sign in</a></li>
+			<li><a th:href="@{/adminReg}">Admin Sign up</a></li>
+			<li><a th:href="@{/adminLoginForm}">Admin Sign in</a></li>
+		</ul>
+	</nav>
+<div class="typing-demo">
+<div class="body-class">
+   Please sign up, or Sign in if you already have an account, see ya soon!
+   </div>
+    </div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+		<body>
+    
+	
+	<footer>
+		&copy; 2023 Real Estate Management
+	</footer>
+	
+</body>
+</html>

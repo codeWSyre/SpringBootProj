@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+/* CSS for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table thead {
+  background-color: #f2f2f2;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Alternate row colors */
+table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* CSS for table header */
+table th {
+  font-weight: bold;
+}
+
+/* CSS for table hover effect */
+table tbody tr:hover {
+  background-color: #e6e6e6;
+}
+body{
+ font-family: cursive;
+            background-image: url("/img/pic2.jpg");
+}
+
+</style>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Bedrooms</th>
+            <th>Bathrooms</th>
+             <th>update</th>
+            <th>Delete</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="property : ${property}">
+            <td th:text="${property.id}"></td>
+            <td th:text="${property.name}"></td>
+            <td th:text="${property.price}"></td>
+            <td th:text="${property.location}"></td>
+            <td th:text="${property.bedrooms}"></td>
+            <td th:text="${property.bathrooms}"></td>
+            <td><a href="#" th:href="@{/DeleteProperty/{id}(id=${property.id})}">Delete</a></td>
+          <td><a href="#" th:href="@{/showPropFormForUpdate/{id}(id=${property.id})}">Update</a></td>
+        
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

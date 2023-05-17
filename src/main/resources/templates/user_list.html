@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Users</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #F0F0F0;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      text-align: center;
+      color: #444;
+      margin: 1rem 0;
+      font-family: cursive;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1rem;
+      background-color: #fff;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+      font-family: cursive;
+    }
+
+    th, td {
+      text-align: left;
+      font-family: cursive;
+      padding: 1.2rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #E5E5E5;
+    }
+
+    th {
+      background-color: #4CAF50;
+      color: white;
+      font-family: cursive;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    td:last-child {
+      text-align: center;
+    }
+
+    a {
+      display: inline-block;
+      background-color: #4CAF50;
+      font-family: cursive;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      border-radius: 1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    a:hover {
+      background-color: #357D3B;
+    }
+/* Navigation styles */
+nav {
+	background-color:red;
+	border-bottom: 1px solid #ccc;
+	padding: 10px;
+	font-family: cursive;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+	display: flex;
+	justify-content: space-between;
+	font-family: cursive;
+}
+
+nav li {
+font-family: cursive;
+	display: inline-block;
+	font-family: cursive;
+}
+
+nav a {
+font-family: cursive;
+	display: block;
+	padding: 10px;
+	color: #333;
+	text-decoration: none;
+}
+
+nav a:hover {
+	background-color: #ddd;
+}
+body{
+background-image: url("/img/house2.jpg");
+background-size: 100%;
+ background-repeat: no-repeat;
+
+}
+
+  </style>
+</head>
+<body>
+
+	<nav>
+		<ul>
+			<li><a th:href="@{/}">Home</a></li>
+			<li><a th:href="@{/listProp}">list all properties</a></li>
+			<li><a th:href="@{/showUserForm}">Users registration</a></li>
+			<li><a th:href="@{/showLoginForm}">User Login portal</a></li>
+			
+		</ul>
+	</nav>
+  <h1>All Users</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Password</th>
+        <th>Edit</th>
+          <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="user : ${users}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.email}"></td>
+        <td th:text="${user.address}"></td>
+        <td th:text="${user.password}"></td>
+        <td><a href="#" th:href="@{/DeleteUser/{id}(id=${user.id})}">Delete</a></td>
+          <td><a href="#" th:href="@{/showUserFormForUpdate/{id}(id=${user.id})}">Update</a></td>
+                 
+      </tr>
+    </tbody>
+  </table>
+    <a th:href="@{/showUserForm}">SignUp</a>
+</body>
+</html>

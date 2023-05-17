@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+    font-family: cursive;
+            background-image: url("/img/pic2.jpg");
+
+}
+
+form {
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form div {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+h1{
+
+}
+
+</style>
+</head>
+<body>
+    <form th:action="@{/saveProperty}" method="post" th:object="${property}">
+        <input type="hidden" th:field="*{id}">
+           <h1 align="center">Property Updating</h1>
+        <div>
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" th:field="*{id}" required>
+        </div>
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:field="*{name}" required>
+        </div>
+        <div>
+            <label for="price">Price:</label>
+            <input type="text" id="price" name="price" th:field="*{price}" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" th:field="*{location}" required>
+        </div>
+        <div>
+            <label for="bedrooms">Bedrooms:</label>
+            <input type="text" id="bedrooms" name="bedrooms" th:field="*{bedrooms}" required>
+        </div>
+        <div>
+            <label for="bathrooms">Bathrooms:</label>
+            <input type="text" id="bathrooms" name="bathrooms" th:field="*{bathrooms}" required>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+    table {
+width: 100%;
+border-collapse: collapse;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+height: 100%; /* Set table height to fill container */
+}
+
+th {
+background-color: black;
+color: #fff;
+font-weight: bold;
+text-align: center;
+padding: 8px;
+font-family: cursive;
+}
+
+td {
+background-color: #f8f9fa;
+text-align: center;
+padding: 8px;
+font-family: cursive;
+}
+
+tr:nth-child(even) td {
+background-color: #e9ecef;
+}
+
+a.button {
+display: inline-block;
+border-radius: 3px;
+background-color: #0d6efd;
+color: white;
+text-align: center;
+padding: 8px;
+text-decoration: none;
+font-family: cursive;
+}
+
+a.button:hover {
+background-color: #0056b3;
+}
+    </style>
+</head>
+
+<body>
+    <h1>Search Results</h1>
+    
+  <table>
+
+
+ <thead>
+      <tr>
+        <th>id</th>
+        <th>address</th>
+        <th>name</th>
+        <th>availability</th>
+        <th>bathrooms</th>
+        <th>bedrooms</th>
+        <th>description</th>
+        <th>price</th>
+        <th>size</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="property : ${property}">
+        <td th:text="${property.id}"></td>
+        <td th:text="${property.address}"></td>
+        <td th:text="${property.name}"></td>
+        <td th:text="${property.availability}"></td>
+        <td th:text="${property.bathrooms}"></td>
+         <td th:text="${property.bedrooms}"></td>
+          <td th:text="${property.description}"></td>
+           <td th:text="${property.price}"></td>
+            <td th:text="${property.size}"></td>
+
+      </tr>
+    </tbody>
+
+</table>
+    
+</body>
+
+</html>
