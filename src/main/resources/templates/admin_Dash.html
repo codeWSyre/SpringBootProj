@@ -15,12 +15,14 @@
             font-family: Arial, sans-serif;
             background-color: #f1f1f1;
             font-family: cursive;
-            background-image: url('/img/picture2.jpg');
+           background-image: url("/img/picture1.jpg");
+            background-size: 100%;
+ background-repeat: no-repeat;
         }
 
         /* Side Navigation */
         .sidenav {
-            width: 250px;
+            width: 260px;
             background-color: #333;
             color: #fff;
             height: 100vh;
@@ -52,7 +54,7 @@
 
         h1 {
             color: #333;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .card {
@@ -67,39 +69,103 @@
             color: #555;
             margin-bottom: 10px;
         }
+        .logo {
+            max-width: 100px; /* Adjust the size as needed */
+            height: auto;
+        }
 
         .card p {
             color: #777;
             margin-bottom: 0;
+            
         }
+           .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+        /* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+    h3{
+    
+    font-size: 18px;
+    color: red;
+    }  
+    h2{
+    font-size: 20px;
+    color: white;
+    } 
     </style>
 </head>
 <body>
     <div class="sidenav">
+      <img class="logo" src="/img/logo1.jpg" alt="Logo"><br>
+          <h2>  Real Estate Management System.<br></h2>
+            
+       <h3  th:text="${admin.email}"></h3>
         <a th:href="@{/}">Home</a>
         <a th:href="@{/userList}">Users</a>
-        <a th:href="@{/listProp}">Properties</a>
-        <a th:href="@{/showUserForm}">Add user</a>
-        <a th:href="@{/showUserForm}">Add user</a>
-        <a th:href="@{/listAgents}">Admins</a>
+        <a th:href="@{/listProp}">All Properties</a>
+        <a th:href="@{/showUserForm}">Add client</a>
+        <a th:href="@{/listAgents}">Admins </a>
+         <a th:href="@{/showPropReg}">Register property</a>
+         <a th:href="@{/showSearchingPortal}">search</a>
+          <a th:href="@{/BookedList}">Booked properties</a>
+           <a th:href="@{/showBookingPortal}">Booking portal</a>
+           <a th:href="@{/showPropForBook}">Book for client</a>
+          
     </div>
     
     <div class="main">
         <h1>Admin Dashboard</h1>
 
         <div class="card">
-            <h2>Welcome, Admin</h2>
-            <p>This is the admin dashboard. You can manage users, products, orders, and settings here.</p>
+            <h2>Welcome,<a  th:text="${admin.username}"></a> </h2>
+            <p>This is the admin dashboard. You can manage users, products, orders, and settings here.<br> <a class="button"  th:href="@{/listAgents}">Admins</a><br></p>
         </div>
 
         <div class="card">
             <h2>Users</h2>
-            <p>You have 100 registered users.</p>
+            <p>   <a class="button" th:href="@{/userList}">Users</a> <br>
+             <a class="button"  th:href="@{/showUserForm}">Add user</a><br>
+      </p>
         </div>
 
         <div class="card">
-            <h2>Products</h2>
-            <p>You have 50 products in the inventory.</p>
+            <h2>Proprties</h2>
+            <p>  <a class="button" th:href="@{/listProp}">Properties</a><br>
+        <a class="button" th:href="@{/showPropReg}">Register property</a><br>
+        <a class="button" th:href="@{/showSearchingPortal}">Search</a><br>
+        <a class="button" th:href="@{/BookedList}">Booked properties</a><br>
+        <a class="button" th:href="@{/showBookingPortal}">Booking portal</a><br></p>
         </div>
 
         <div class="card">

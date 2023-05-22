@@ -12,7 +12,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
     font-family: cursive;
-            background-image: url("/img/pic2.jpg");
+            background-image: url("/img/picture3.jpg");
 
 }
 
@@ -33,10 +33,13 @@ h2 {
 
 form {
     margin-bottom: 30px;
+   
+    
 }
 
 form div {
     margin-bottom: 20px;
+    
 }
 
 label {
@@ -78,7 +81,36 @@ input[type="submit"] {
     transition: background-color 0.3s ease;
 }
 
-input[type="submit"]:hover {
+input[type="reset"]:hover {
+    background-color: #45a049;
+}
+input[type="reset"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="button"]:hover {
+    background-color: #45a049;
+}
+input[type="button"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+input[type="reset"]:hover {
     background-color: #45a049;
 }
 
@@ -86,40 +118,60 @@ input[type="submit"]:hover {
     color: red;
     font-size: 14px;
 }
+.success-message {
+    color: green;
+    font-weight: bold;
+    margin-top: 10px;
+}
+/* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
+
 </style>
 </head>
 <body>
 <div class="container">
     <h2>Guest Registration</h2>
-
+<div th:if="${message}" class="success-message" th:text="${message}"></div> 
     <form th:action="@{/addUser}" th:object="${users}" method="post">
-        <div>
-            <label for="id">ID:</label>
-            <input type="number" id="id" th:field="*{id}" placeholder="Enter ID">
-        </div>
+      
         <div>
             <label for="name">Name:</label>
             <input type="text" id="name" th:field="*{name}" placeholder="Enter Name">
         </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" th:field="*{phone}" placeholder="Enter Phone">
-        </div>
+       
         <div>
             <label for="email">Email:</label>
             <input type="text" id="email" th:field="*{email}" placeholder="Enter Email">
         </div>
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" id="address" th:field="*{address}" placeholder="Enter Address">
-        </div>
+        
         <div>
             <label for="password">Password:</label>
             <input type="password" id="password" th:field="*{password}" placeholder="Enter Password">
         </div>
         <div>
-            <input type="submit" value="Register">
+            <input type="submit" value="Register">  <input type="reset"  value="Reset">
         </div>
+        <a th:href="@{/showLoginForm}" >Login</a>
     </form>
 </div>
 

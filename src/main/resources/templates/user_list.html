@@ -4,9 +4,32 @@
   <meta charset="UTF-8">
   <title>All Users</title>
   <style>
+  .container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
     body {
       font-family: Arial, sans-serif;
       background-color: #F0F0F0;
+      background-image: url("/img/picture1.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
     }
 
     h1 {
@@ -65,88 +88,40 @@
     a:hover {
       background-color: #357D3B;
     }
-/* Navigation styles */
-nav {
-	background-color:red;
-	border-bottom: 1px solid #ccc;
-	padding: 10px;
-	font-family: cursive;
-}
-
-nav ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	display: flex;
-	justify-content: space-between;
-	font-family: cursive;
-}
-
-nav li {
-font-family: cursive;
-	display: inline-block;
-	font-family: cursive;
-}
-
-nav a {
-font-family: cursive;
-	display: block;
-	padding: 10px;
-	color: #333;
-	text-decoration: none;
-}
-
-nav a:hover {
-	background-color: #ddd;
-}
-body{
-background-image: url("/img/house2.jpg");
-background-size: 100%;
- background-repeat: no-repeat;
-
-}
-
+    
+    body {
+      background-image: url("/img/house2.jpg");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
   </style>
 </head>
 <body>
-
-	<nav>
-		<ul>
-			<li><a th:href="@{/}">Home</a></li>
-			<li><a th:href="@{/listProp}">list all properties</a></li>
-			<li><a th:href="@{/showUserForm}">Users registration</a></li>
-			<li><a th:href="@{/showLoginForm}">User Login portal</a></li>
-			
-		</ul>
-	</nav>
   <h1>All Users</h1>
   <table>
     <thead>
       <tr>
         <th>ID</th>
         <th>Name</th>
-        <th>Phone</th>
+        
         <th>Email</th>
-        <th>Address</th>
+     
         <th>Password</th>
         <th>Edit</th>
-          <th>Delete</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="user : ${users}">
         <td th:text="${user.id}"></td>
         <td th:text="${user.name}"></td>
-        <td th:text="${user.phone}"></td>
+       
         <td th:text="${user.email}"></td>
-        <td th:text="${user.address}"></td>
+       
         <td th:text="${user.password}"></td>
-        <td><a href="#" th:href="@{/DeleteUser/{id}(id=${user.id})}">Delete</a></td>
-          <td><a href="#" th:href="@{/showUserFormForUpdate/{id}(id=${user.id})}">Update</a></td>
-                 
+        <td><a href="#" th:href="@{/DeleteUser/{id}(id=${user.id})}" onclick="return confirm('Are you sure you want to delete this property?')">Delete</a></td>
+        <td><a href="#" th:href="@{/showUserFormForUpdate/{id}(id=${user.id})}">Update</a></td>
       </tr>
     </tbody>
   </table>
-    <a th:href="@{/showUserForm}">SignUp</a>
-</body>
-</html>
+  <a th:href="@{/}">signup</a>

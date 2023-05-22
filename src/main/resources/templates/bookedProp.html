@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta >
+    <title>Property Bookings</title>
+    <style>
+  table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.8); /* Set the background color with opacity */
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+        font-family: cursive;
+        background-image: url("/img/picture3.jpg");
+            background-size: 100%;
+ background-repeat: no-repeat;
+    }
+    /* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+   a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    
+    a.button {
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+}
+    
+    </style>
+</head>
+
+<body>
+    <h1 align="center">Property Bookings</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Location</th>
+            <th>Buyer id</th>
+            <th>Buyer email</th>
+            <th>Check-in Date</th>
+            <th>Check-out Date</th>
+        </tr>
+        <tr th:each="booking : ${propertyBookingList}">
+            <td th:text="${booking.id}"></td>
+            <td th:text="${booking.location}"></td>
+             <td th:text="${booking.buyerId}"></td>
+            <td th:text="${booking.buyerEmail}"></td>
+            <td th:text="${booking.checkInDate}"></td>
+            <td th:text="${booking.checkOutDate}"></td>
+        </tr>
+    </table>
+</body><br>
+<a th:href="@{/}" class="button">Back Home</a>
+<a th:href="@{/showBookingPortal}" class="button">Back </a>
+
+</html>

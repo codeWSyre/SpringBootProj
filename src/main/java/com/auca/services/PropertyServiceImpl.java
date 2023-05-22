@@ -1,5 +1,6 @@
 package com.auca.services;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,10 +12,13 @@ import org.springframework.stereotype.Service;
 
 import com.auca.models.Admin;
 import com.auca.models.Property;
+import com.auca.models.PropertyBooking;
 import com.auca.models.Users;
 import com.auca.repositories.AdminRepository;
+import com.auca.repositories.BookingRepository;
 import com.auca.repositories.PropertyRepository;
 import com.auca.repositories.UserRepository;
+import com.fasterxml.jackson.databind.annotation.JsonAppend.Prop;
 
 @Service
 public class PropertyServiceImpl implements PropertyService{
@@ -24,6 +28,8 @@ public class PropertyServiceImpl implements PropertyService{
 	public AdminRepository adminRepo;
 	@Autowired
 	public UserRepository userRepo;
+	@Autowired
+	public BookingRepository bookRepo;
 	
 	
 	@Override
@@ -59,28 +65,9 @@ public class PropertyServiceImpl implements PropertyService{
 		
 	}
 
-	@Override
-	public User getUsersById(Long id) {
-		// TODO Auto-generated method stub
-		Optional<Users> optional=userRepo.findById(id);
-		Users users=null;
-		if(optional.isPresent())
-		{
-			users =optional.get();
-			
-		}else { 
-			throw new RuntimeErrorException(null, "student not not found for id ::"+ id);
-					}
-		return (User) users;
-	}
-	
-	@Override
-	public boolean authenticateUser(Long id, String password) {
-		 Users users = userRepo.getById(id);
-	        return users != null && users.getPassword().equals(password);
-		
-	}
 
+	
+	
 
 	
 
@@ -139,11 +126,7 @@ public class PropertyServiceImpl implements PropertyService{
 		return admin;
 	}
 
-	@Override
-	public boolean authenticateAdmin(Long id, String password) {
-		 Admin admin= adminRepo.getById(id);
-	        return admin != null && admin.getPassword().equals(password);
-	}
+
 
 
 
@@ -159,6 +142,76 @@ public class PropertyServiceImpl implements PropertyService{
 		// TODO Auto-generated method stub
 		return adminRepo.findAll();
 	}
+
+	
+
+	@Override
+	public void saveBookedProperty(PropertyBooking propertyBooking) {
+		// TODO Auto-generated method stub\
+		this.bookRepo.save(propertyBooking);
+		
+	}
+
+	@Override
+	public List<PropertyBooking> getAllBookingProperties() {
+		// TODO Auto-generated method stub
+	return bookRepo.findAll();
+	}
+
+	@Override
+	public Property findPropertyByLocation(String location) {
+		// TODO Auto-generated method stub
+	    Property prop = new Property();
+	    List<Property> properties = propRepo.findPropByLocation(prop.getLocation());
+
+	    if (properties.isEmpty()) {
+	        // No properties found
+	        return null;
+	    } else {
+	        // At least one property found
+	        return properties.get(0);
+	    }
+		//return (Property) propRepo.findPropByLocation(location);
+	}
+
+	@Override
+	public Users loginUser(String email, String password) {
+		   Users user = userRepo.findByEmail(email);
+	        if (user != null && user.getPassword().equals(password)) {
+	            return user;
+	        } else {
+	            return null;
+	        }
+	    }
+
+	@Override
+	public Admin loginAdmin(String email, String password) {
+		  Admin admin = adminRepo.findByEmail(email);
+	        if (admin != null && admin.getPassword().equals(password)) {
+	            return admin;
+	        } else {
+	            return null;
+	        }
+	}
+
+	@Override
+	public Users getUsersById(Long id) {
+		// TODO Auto-generated method stub
+		Optional<Users> optional=userRepo.findById(id);
+		Users users=null;
+		if(optional.isPresent())
+		{
+			users =optional.get();
+			
+		}else { 
+			throw new RuntimeErrorException(null, "student not not found for id ::"+ id);
+					}
+		return users;
+	}
+
+	
+	
+	
 
 	
 

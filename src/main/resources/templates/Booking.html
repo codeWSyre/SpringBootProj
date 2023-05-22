@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Property Booking</title>
+    <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+form {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 60px;
+  background-color: teal;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+input[type="number"],
+input[type="email"],
+input[type="text"],
+input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f1f1f1;
+     font-family: cursive;
+            background-image: url("/img/picture2.jpg");
+}
+   .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        .success-message {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+            background-color: #28a745;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+/* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+a.button {
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+a.button:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+
+<body>
+    <h1>Property Booking</h1>
+    <form th:action="@{/saveBooked}" method="post" th:object="${propertyBooking}">
+     <div th:if="${message}" class="success-message" th:text="${message}"></div> <br>
+      <div>
+            <label for="id">Property id:</label>
+            <input type="number" id="id" name="id" th:field="*{id}" required>
+        </div>
+        <div>
+            <label for="location">Location:</label>
+            <input type="text" id="location" name="location" th:field="*{location}" required>
+        </div>
+           <label for="id">Buyer id:</label>
+            <input type="number" id="id" name="id" th:field="*{buyerId}" required>
+       
+        <div>
+            <label for="email">Buyer Email:</label>
+            <input type="email" id="email" name="email" th:field="*{buyerEmail}" required>
+        </div>
+        <div>
+            <label for="checkInDate">Check-in Date:</label>
+            <input type="date" id="checkInDate" name="checkInDate" th:field="*{checkInDate}" required>
+        </div>
+        <div>
+            <label for="checkOutDate">Check-out Date:</label>
+            <input type="date" id="checkOutDate" name="checkOutDate" th:field="*{checkOutDate}" required>
+        </div>
+        <div>
+            <button type="submit">Book Property</button>
+            
+        </div><br>
+      <a  th:href="@{/BookedList}" class="button">see booked list</a> 
+        <a th:href="@{/}" class="button">Back Home</a>
+    </form>
+</body>
+
+</html>

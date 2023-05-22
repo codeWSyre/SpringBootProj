@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+  /* CSS for the table */
+  table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.8); /* Set the background color with opacity */
+    }
+
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+        font-family: cursive;
+        background-image: url("/img/picture4.jpg");
+    }
+     .button {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #45a049;}
+    /* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+    
+</style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Address</th>
+        <th>Name</th>
+        <th>Bathrooms</th>
+        <th>Bedrooms</th>
+        <th>Price</th>
+        <th>Book</th>
+        <th>Search</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="property : ${property}">
+        <td th:text="${property.id}"></td>
+        <td th:text="${property.location}"></td>
+        <td th:text="${property.name}"></td>
+        <td th:text="${property.bathrooms}"></td>
+        <td th:text="${property.bedrooms}"></td>
+        <td th:text="${property.price}"></td>
+        <td>
+          <a th:href="@{/showBookingPortal}" class="button">Book</a>
+           <a th:href="@{/showSearchingPortal}" class="button">search</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+			<h2 align="center"><a th:href="@{/adminPropList}" class="button">view available properties</a></h2>
+			
+		<h2 align="center"><a th:href="@{/showUserForm}" class="button">Users registration</a></h2>
+		
+			
+		
+</body>
+</html>

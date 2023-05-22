@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Email Form</title>
+    <!-- Add appropriate CSS styles -->
+</head>
+<body>
+<h1>Email Form</h1>
+<form action="/email" method="post">
+    <div>
+        <label for="recipient">Recipient:</label>
+        <input type="text" id="recipient" name="recipient" required>
+    </div>
+    <div>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+    </div>
+    <div>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" rows="5" required></textarea>
+    </div>
+    <button type="submit">Send</button>
+</form>
+</body>
+</html>
+>

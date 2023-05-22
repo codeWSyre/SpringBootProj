@@ -139,7 +139,9 @@ body {
   padding: 0 20px;
   
    font-family: cursive;
-            background-image: url("/img/pic2.jpg");
+            background-image: url("/img/picture3.jpg");
+            background-size: 100%;
+ background-repeat: no-repeat;
 }
 
 .nav {
@@ -199,21 +201,40 @@ body {
   border-radius: 8px 8px 0 0;
 }
 
-@media (max-width: 580px) {
-  .nav { overflow: auto; }
+/* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
 }
-    
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+  
     
 </style>
 </head>
 <body>
 
 <div class="login-form">
-  <h2>Login portal</h2>
-  <form action="#" th:action="@{/authenticateAdmin}" th:object="${admin}" method="post">
+  <h2>Admin Login portal</h2>
+  <form action="#" th:action="@{/adminLogin}" th:object="${admin}" method="post">
+ 
     <div class="form-group">
-     <label>id:</label>
-      <input type="number" class="form-control" th:field="*{id}"  required> 
+     <label>email:</label>
+      <input type="email" class="form-control" th:field="*{email}"  required> 
     </div>
     <div class="form-group">
       <label>password:</label>
@@ -222,9 +243,8 @@ body {
     <button type="submit" class="btn btn-primary">Login</button><br>
     
     <label>Already have an account?</label>
-     <a th:href="@{/showUserForm}">SignUp</a>
+     <a th:href="@{/adminReg}">SignUp</a>
   </form>
 </div>
-
 </body>
 </html>

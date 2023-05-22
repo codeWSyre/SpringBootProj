@@ -1,221 +1,171 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-	<title>Real Estate Management Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<style>
-	/* General styles */
-body {
-	font-family: Arial, sans-serif;
-	margin: 0;
-	padding: 0;
-	
-background-size: 100%;
+    <meta charset="UTF-8">
+    <title>Real Estate Management System</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+                   font-family: cursive;
+        background-image: url("/img/picture3.jpg");
+            background-size: 100%;
  background-repeat: no-repeat;
-  font-family: cursive;
-            background-image: url("/img/pic2.jpg");
-}
+        }
 
-/* Header styles */
-header {
-	background-color: #333;
-	color: #fff;
-	padding: 20px;
-	text-align: center;
-}
+        .header {
+            background-color: black;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+        }
 
-/* Navigation styles */
-nav {
-	background-color: #eee;
-	border-bottom: 1px solid #ccc;
-	padding: 10px;
-	font-family: cursive;
-}
+        .footer {
+            background-color: #333;
+            padding: 10px;
+            color: #fff;
+            text-align: center;
+        }
 
-nav ul {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	display: flex;
-	justify-content: space-between;
-	font-family: cursive;
-}
+        .cover {
+            min-height: calc(100vh - 120px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-nav li {
-font-family: cursive;
-	display: inline-block;
-	font-family: cursive;
-}
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-nav a {
-font-family: cursive;
-	display: block;
-	padding: 10px;
-	color: #333;
-	text-decoration: none;
-}
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
 
-nav a:hover {
-	background-color: #ddd;
-}
+        .link-list li {
+            display: inline-block;
+            margin-right: 10px;
+        }
 
-/* Main content styles */
-main {
-	padding: 20px;
-}
+        .link-list li a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
 
-/* Footer styles */
-footer {
-	background-color: #333;
-	color: #fff;
-	padding: 10px;
-	text-align: center;
-	font-family: cursive;
-}
+        .link-list li a.signup {
+            background-color: #007bff;
+        }
 
-/* Button styles */
-button {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	font-family: cursive;
-	cursor: pointer;
-}
+        .link-list li a.signup:hover {
+            background-color: #0056b3;
+        }
 
-button:hover {
-	background-color: #3e8e41;
-}
-.button {
-  display: inline-block;
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 20px;
-  font-family: cursive;
-}
+        .link-list li a.login {
+            background-color: #28a745;
+        }
 
-.button:hover {
-  background-color: #3e8e41;
-}
+        .link-list li a.login:hover {
+            background-color: #218838;
+        }
 
-	h1{
-	font-family: cursive;
-	font-size: xx-large;
-	
-	}
-	h2 {
-			color: black;
-			font-size: 32px;
-			font-weight: bold;
-			text-transform: uppercase;
-			letter-spacing: 3px;
-			background-color: silver;
-			font-family: cursive;
-			display: inline-block;
-			margin-left: 270px;
-			
-		}
-		p {
-			color: black;
-			font-size: 24px;
-			font-family: Georgia, serif;
-			line-height: 1.5;
-			font-style: italic;
-			background-color: silver;
-			display: inline-block;
-			margin-left: 270px;
-		}
-.logo {
-  display: flex;
-  align-items: center;
-  background-color: #333;
-  padding: 10px;
-  border-radius: 5px;
-}
+        .link-list li a.admin {
+            background-color: #ffc107;
+        }
 
-.logo img {
-  max-width: 10%;
-  height: auto;
-  margin-right: 30px;
-   margin-left: 300px;
-}
+        .link-list li a.admin:hover {
+            background-color: #e0a800;
+        }
 
-.logo h1 {
-  font-size: 40px;
-  margin: 0;
-  color: #fff;
-}
-.wrapper {
-  height: 100vh;
-  /*This part is important for centering*/
-  display: grid;
-  place-items: center;
-}
+        .link-list li a.logout {
+            background-color: #dc3545;
+        }
 
-.typing-demo {
-  width: 66ch;
-  animation: typing 4s steps(70), blink .5s step-end infinite alternate;
-  white-space: nowrap;
-  overflow: hidden;
-  border-right: 3px solid;
-  font-family: monospace;
-  font-size: 2em;
-}
+        .link-list li a.logout:hover {
+            background-color: #c82333;
+        }
 
-@keyframes typing {
-  from {
-    width: 0
-  }
-}
-    
-@keyframes blink {
-  50% {
-    border-color: transparent
-  }
-}
-	.body-class{
-	background-color: green;
-	}	
-		
-	</style>
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 28px;
+            }
+        }
 
+        @media (max-width: 480px) {
+            .cover {
+                padding: 0 10px;
+            }
+        }
+        .logo {
+            max-width: 150px; /* Adjust the size as needed */
+            height: auto;
+            margin-left: 20px
+            
+        }
+        h1{
+        color: black;
+        }
+    </style>
 </head>
-
 <body>
-	<header>
-    <div class="typing-demo">
-     Welcome To My Real Estate Management System.
+    <div class="header">
+     <img class="logo" src="/img/willLogo.jpg" alt="Logo">
+        <h2>Real Estate Management System</h2>
     </div>
-	</header>
-	<nav>
-		<ul>
-			<li><a th:href="@{/}">Home</a></li>		
-			<li><a th:href="@{/showUserForm}">Sign up</a></li>
-			<li><a th:href="@{/showLoginForm}">Sign in</a></li>
-			<li><a th:href="@{/adminReg}">Admin Sign up</a></li>
-			<li><a th:href="@{/adminLoginForm}">Admin Sign in</a></li>
-		</ul>
-	</nav>
-<div class="typing-demo">
-<div class="body-class">
-   Please sign up, or Sign in if you already have an account, see ya soon!
-   </div>
+    <div class="cover">
+        <h1>Welcome to the Real Estate Management System</h1>
+        <ul class="link-list">
+            <li class="active"><a class="signup" th:href="@{/showUserForm}">Guests Sign up</a></li>
+            <li><a class="login" th:href="@{/showLoginForm}">Guests Sign in</a></li>
+            <li><a class="admin" th:href="@{/adminReg}">Admin Sign up</a></li>
+            <li><a class="admin" th:href="@{/adminLoginForm}">Admin Sign in</a></li>
+        </ul>
     </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-		<body>
+    <div class="footer">
+        <p>&copy; 2023 Real Estate Management System. All rights reserved.</p>
+    </div>
     
-	
-	<footer>
-		&copy; 2023 Real Estate Management
-	</footer>
-	
 </body>
+<script>
+    // Add interactive features here using JavaScript or jQuery
+    // For example, you can add a click event listener to the buttons and perform actions
+
+    // Example using jQuery:
+    $(document).ready(function() {
+        // Button click event handlers
+        $('.signup').click(function() {
+            alert('Sign up button clicked!');
+            // Perform any desired action
+        });
+
+        $('.login').click(function() {
+            alert('Sign in button clicked!');
+            // Perform any desired action
+        });
+
+        $('.admin').click(function() {
+            alert('Admin button clicked!');
+            // Perform any desired action
+        });
+
+        $('.logout').click(function() {
+            alert('Logout button clicked!');
+            // Perform any desired action
+        });
+    });
+</script>
 </html>
+
+

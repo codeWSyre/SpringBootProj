@@ -2,43 +2,32 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>All properties</title>
 <style>
-/* CSS for the table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+  table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.8); /* Set the background color with opacity */
+    }
 
-table thead {
-  background-color: #f2f2f2;
-}
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-table th,
-table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
 
-/* Alternate row colors */
-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* CSS for table header */
-table th {
-  font-weight: bold;
-}
-
-/* CSS for table hover effect */
-table tbody tr:hover {
-  background-color: #e6e6e6;
-}
-body{
- font-family: cursive;
-            background-image: url("/img/pic2.jpg");
-}
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f1f1f1;
+        font-family: cursive;
+        background-image: url("/img/picture3.jpg");
+    }
 
 </style>
 </head>
@@ -65,7 +54,7 @@ body{
             <td th:text="${property.location}"></td>
             <td th:text="${property.bedrooms}"></td>
             <td th:text="${property.bathrooms}"></td>
-            <td><a href="#" th:href="@{/DeleteProperty/{id}(id=${property.id})}">Delete</a></td>
+            <td><a href="#" th:href="@{/DeleteProperty/{id}(id=${property.id})}" onclick="return confirm('Are you sure you want to delete this property?')">Delete</a></td>
           <td><a href="#" th:href="@{/showPropFormForUpdate/{id}(id=${property.id})}">Update</a></td>
         
         </tr>

@@ -4,54 +4,117 @@
     <meta charset="UTF-8">
     <title>Add Property</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-    <style >
-    body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-     font-family: cursive;
-            background-image: url("/img/pic2.jpg");
-    
+    <style>
+        body {
+            font-family: cursive;
+            margin: 20px;
+            background-image: url("/img/picture3.jpg");
+            background-size: cover;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        form {
+            margin-top: 20px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        input[type="text"] {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        .success-message {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+            background-color: #28a745;
+            padding: 10px;
+            border-radius: 3px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+     .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+        /* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
 }
 
-h2 {
-    color: #333;
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
 }
 
-form {
-    margin-top: 20px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    background-color: #f9f9f9;
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
 }
-
-label {
-    display: inline-block;
-    width: 100px;
-    margin-bottom: 10px;
-}
-
-input[type="text"] {
-    width: 200px;
-    padding: 5px;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-    
+        
     </style>
 </head>
 <body>
-    <h2>Add Property</h2>
-    <form     th:action="@{/saveProperty}" method="post" th:object="${property}" >
+    <h2 align="center">Add Property</h2>
+    <form th:action="@{/saveProperty}" method="post" th:object="${property}">
+        <div th:if="${message}" class="success-message" th:text="${message}"></div> <br>
         <div>
             <label for="id">ID:</label>
             <input type="text" id="id" name="id" th:field="*{id}" required>
@@ -76,7 +139,8 @@ button:hover {
             <label for="bathrooms">Bathrooms:</label>
             <input type="text" id="bathrooms" name="bathrooms" th:field="*{bathrooms}" required>
         </div>
-        <button type="submit">Save</button>
+        <button type="submit">Save</button> <br><br><a class="button" th:href="@{/listProp}">View all properties</a>
     </form>
 </body>
 </html>
+            

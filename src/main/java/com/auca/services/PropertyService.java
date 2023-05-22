@@ -6,6 +6,7 @@ import org.apache.catalina.User;
 
 import com.auca.models.Admin;
 import com.auca.models.Property;
+import com.auca.models.PropertyBooking;
 import com.auca.models.Users;
 
 public interface PropertyService {
@@ -13,15 +14,17 @@ public interface PropertyService {
 	List<Property> getAllProperties();
 	 void saveProperty(Property property);
 	 
+		List<PropertyBooking> getAllBookingProperties();
+		 void saveBookedProperty(PropertyBooking propertyBooking);
+	 
 	 void saveUsers(Users users);
 	 List<Users> getAllUsers();
 	 
 	 void deletePropertyById(Long id);
 	  Property findPropertyById(Long id);
+	  Property findPropertyByLocation(String location);
 	  
-	  User getUsersById(Long id);
-	  boolean authenticateUser(Long id, String password);
-	  
+	  Users getUsersById(Long id);
 	 
 	  void deleteUserById(Long id);
 	  
@@ -34,9 +37,11 @@ public interface PropertyService {
 	    
 	    void saveAdminUsers(Admin admin);
 	    Admin findAdminById(Long id);
-	    boolean authenticateAdmin(Long id, String password);
+	   
 	    List<Admin> getAllAdmins();
 	  //  public Users authenticate(String email, String password);
+	    Users loginUser(String email, String password);
+	    Admin loginAdmin(String email, String password);
 	
 
 }

@@ -4,11 +4,35 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <style>
+/* Styles for desktop screens */
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+/* Styles for tablet screens */
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+/* Styles for mobile screens */
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f1f1f1;
      font-family: cursive;
-            background-image: url("/img/pic2.jpg");
+             background-image: url("/img/picture1.jpg");
+            background-size: 100%;
+ background-repeat: no-repeat;
 }
 
 form {
@@ -56,7 +80,7 @@ input[type="submit"]:hover {
 </style>
 </head>
 <body>
-    <form th:action="@{/addUser}" th:object="${users}" method="post">
+    <form th:action="@{/addUser}" th:object="${user}" method="post">
         <input type="hidden" th:field="*{id}">
         <div>
             <label for="id">ID:</label>
@@ -66,18 +90,12 @@ input[type="submit"]:hover {
             <label for="name">Name:</label>
             <input type="text" id="name" th:field="*{name}" required>
         </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" th:field="*{phone}" required>
-        </div>
+       
         <div>
             <label for="email">Email:</label>
             <input type="text" id="email" th:field="*{email}" required>
         </div>
-        <div>
-            <label for="address">Address:</label>
-            <input type="text" id="address" th:field="*{address}" required>
-        </div>
+     
         <div>
             <label for="password">Password:</label>
             <input type="password" id="password" th:field="*{password}" required>
