@@ -4,7 +4,7 @@
 <meta charset="ISO-8859-1">
 <title>All properties</title>
 <style>
-  table {
+    table {
         width: 100%;
         border-collapse: collapse;
         background-color: rgba(255, 255, 255, 0.8); /* Set the background color with opacity */
@@ -29,6 +29,23 @@
         background-image: url("/img/picture3.jpg");
     }
 
+    .delete-button {
+        background-color: #e74c3c;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .update-button {
+        background-color: #3498db;
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 3px;
+    }
 </style>
 </head>
 <body>
@@ -41,9 +58,8 @@
             <th>Location</th>
             <th>Bedrooms</th>
             <th>Bathrooms</th>
-             <th>update</th>
+            <th>Update</th>
             <th>Delete</th>
-            
         </tr>
     </thead>
     <tbody>
@@ -54,12 +70,10 @@
             <td th:text="${property.location}"></td>
             <td th:text="${property.bedrooms}"></td>
             <td th:text="${property.bathrooms}"></td>
-            <td><a href="#" th:href="@{/DeleteProperty/{id}(id=${property.id})}" onclick="return confirm('Are you sure you want to delete this property?')">Delete</a></td>
-          <td><a href="#" th:href="@{/showPropFormForUpdate/{id}(id=${property.id})}">Update</a></td>
-        
+            <td><a href="#" th:href="@{/DeleteProperty/{id}(id=${property.id})}" onclick="return confirm('Are you sure you want to delete this property?')" class="delete-button">Delete</a></td>
+            <td><a href="#" th:href="@{/showPropFormForUpdate/{id}(id=${property.id})}" class="update-button">Update</a></td>
         </tr>
     </tbody>
 </table>
-
 </body>
 </html>

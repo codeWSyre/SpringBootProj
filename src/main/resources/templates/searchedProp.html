@@ -5,37 +5,24 @@
 <title>Insert title here</title>
 <style>
 
-/* CSS for the table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.8); /* Set the background color with opacity */
+    }
 
-table thead {
-  background-color: #f2f2f2;
-}
+    th,
+    td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-table th,
-table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
+    th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
 
-/* Alternate row colors */
-table tbody tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
-/* CSS for table header */
-table th {
-  font-weight: bold;
-}
-
-/* CSS for table hover effect */
-table tbody tr:hover {
-  background-color: #e6e6e6;
-}
 body{
  font-family: cursive;
            background-image: url("/img/picture1.jpg");
@@ -93,7 +80,7 @@ font-family: cursive;
         </tr>
     </thead>
     <tbody>
-        <tr th:each="property : ${property}">
+        <tr th:each="property : ${properties}">
             <td th:text="${property.id}"></td>
             <td th:text="${property.name}"></td>
             <td th:text="${property.price}"></td>

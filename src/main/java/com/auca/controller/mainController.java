@@ -2,25 +2,22 @@ package com.auca.controller;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
 
 import org.springframework.web.bind.annotation.*;
-import  org.springframework.validation.*;
-
-
 import com.auca.models.*;
 import com.auca.services.PropertyService;
-
-import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class mainController {
 	
 	@Autowired
 	public PropertyService propServ;
+	
 	
 	@GetMapping("/")
 	public String showAdminFrom(Model model) {
@@ -226,9 +223,9 @@ public String saveBooked(@ModelAttribute("propertyBooking") PropertyBooking prop
  		 //Property prop= new Property();
  		// prop.getLocation();
  		// String myLoc=prop.getLocation();
-         List<Property> properties = (List<Property>) propServ.findPropertyByLocation(location);
-         model.addAttribute("property", properties);
-         return "redirect:/searchPortal"; 
+ 		 List<Property> properties = propServ.searchByLocation(location);
+         model.addAttribute("properties", properties);
+         return "searchedProp"; 
      }
  	 //==============================================login testt============================================
 

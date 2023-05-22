@@ -22,7 +22,8 @@ public interface PropertyService {
 	 
 	 void deletePropertyById(Long id);
 	  Property findPropertyById(Long id);
-	  Property findPropertyByLocation(String location);
+	 
+	  List<Property> searchByLocation(String location);
 	  
 	  Users getUsersById(Long id);
 	 

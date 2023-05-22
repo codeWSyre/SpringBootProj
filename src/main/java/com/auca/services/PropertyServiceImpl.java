@@ -1,11 +1,12 @@
 package com.auca.services;
 
 import java.util.Collections;
+import com.auca.services.*;
 import java.util.List;
 import java.util.Optional;
-
+import com.auca.models.*;
 import javax.management.RuntimeErrorException;
-
+import com.auca.repositories.*;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,9 @@ import com.auca.models.PropertyBooking;
 import com.auca.models.Users;
 import com.auca.repositories.AdminRepository;
 import com.auca.repositories.BookingRepository;
+
 import com.auca.repositories.PropertyRepository;
 import com.auca.repositories.UserRepository;
-import com.fasterxml.jackson.databind.annotation.JsonAppend.Prop;
 
 @Service
 public class PropertyServiceImpl implements PropertyService{
@@ -32,6 +33,7 @@ public class PropertyServiceImpl implements PropertyService{
 	public BookingRepository bookRepo;
 	
 	
+	
 	@Override
 	public List<Property> getAllProperties() {
 		// TODO Auto-generated method stub
@@ -41,7 +43,14 @@ public class PropertyServiceImpl implements PropertyService{
 	@Override
 	public void saveProperty(Property property) {
 		// TODO Auto-generated method stub
+	//while(property != null) {	
 		this.propRepo.save(property);
+	//	Notifications notification = new Notifications();
+      //  notification.setMessage("New property added: " + property.getName());
+     //   notification.set("jesus@example.com"); // Set the recipient
+        
+    //    notificationService.createNotification(notification);
+//	}
 		
 	}
 
@@ -158,21 +167,7 @@ public class PropertyServiceImpl implements PropertyService{
 	return bookRepo.findAll();
 	}
 
-	@Override
-	public Property findPropertyByLocation(String location) {
-		// TODO Auto-generated method stub
-	    Property prop = new Property();
-	    List<Property> properties = propRepo.findPropByLocation(prop.getLocation());
-
-	    if (properties.isEmpty()) {
-	        // No properties found
-	        return null;
-	    } else {
-	        // At least one property found
-	        return properties.get(0);
-	    }
-		//return (Property) propRepo.findPropByLocation(location);
-	}
+	
 
 	@Override
 	public Users loginUser(String email, String password) {
@@ -207,6 +202,12 @@ public class PropertyServiceImpl implements PropertyService{
 			throw new RuntimeErrorException(null, "student not not found for id ::"+ id);
 					}
 		return users;
+	}
+
+	@Override
+	public List<Property> searchByLocation(String location) {
+		// TODO Auto-generated method stub
+		return propRepo.findByLocation(location);
 	}
 
 	
