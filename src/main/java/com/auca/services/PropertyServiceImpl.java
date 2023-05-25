@@ -1,13 +1,8 @@
 package com.auca.services;
 
-import java.util.Collections;
-import com.auca.services.*;
 import java.util.List;
 import java.util.Optional;
-import com.auca.models.*;
 import javax.management.RuntimeErrorException;
-import com.auca.repositories.*;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,28 +64,22 @@ public class PropertyServiceImpl implements PropertyService{
 
 	@Override
 	public void deletePropertyById(Long id) {
-		// TODO Auto-generated method stub
+		
 		this.propRepo.deleteById(id);
 		
 	}
-
-
 	
-	
-
-	
-
 	@Override
 	public void deleteUserById(Long id) {
-		// TODO Auto-generated method stub
 		this.userRepo.deleteById(id);
 	}
 
-	/*@Override
+	/* @Override
 	public List<Property> findByLocation(String address) {
 		// TODO Auto-generated method stub
 		return propRepo;
-	}*/
+		
+	}          */
 
 	
 	@Override
@@ -209,6 +198,15 @@ public class PropertyServiceImpl implements PropertyService{
 		// TODO Auto-generated method stub
 		return propRepo.findByLocation(location);
 	}
+
+	@Override
+	public long countUsers(Users user) {
+		// TODO Auto-generated method stub
+		return userRepo.count();
+	}
+
+
+
 
 	
 	

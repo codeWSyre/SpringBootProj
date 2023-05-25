@@ -48,7 +48,7 @@ body{
 
     /* Side navigation styles */
     .sidenav {
-        width: 200px;
+        width: 300px;
         background-color:black;
         padding: 20px;
         height: 100%;
@@ -92,16 +92,18 @@ body{
     <div class="content">
         <div class="container">
             <h1>Welcome to the User Dashboard</h1> 
+            
             <div class="user-info">
              <h2 th:text="${user.name}">Hi</h2>
                <h2 th:text="${user.email}"></h2>
             </div>
             <div class="user-actions">
                 <a th:href="@{/adminPropList}" class="button">view all properties</a>
-                <a th:href="@{/}" class="button">Logout</a>
+                <a th:href="@{/}" class="button">Logout</a>   <a th:href="@{/showSearchingPortal}" class="button">search</a>
             </div>
         </div>
     </div>
+    
      <footer>
         &copy; 2023 Your Company. All rights reserved.
     </footer>

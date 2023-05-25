@@ -77,7 +77,7 @@
         <th>Bedrooms</th>
         <th>Price</th>
         <th>Book</th>
-        <th>Search</th>
+       
       </tr>
     </thead>
     <tbody>
@@ -90,15 +90,13 @@
         <td th:text="${property.price}"></td>
         <td>
           <a th:href="@{/showBookingPortal}" class="button">Book</a>
-           <a th:href="@{/showSearchingPortal}" class="button">search</a>
+       
         </td>
       </tr>
     </tbody>
   </table>
   
-			<h2 align="center"><a th:href="@{/adminPropList}" class="button">view available properties</a></h2>
-			
-		<h2 align="center"><a th:href="@{/showUserForm}" class="button">Users registration</a></h2>
+   <a th:href="@{/showSearchingPortal}" class="button">search</a>
 		
 			
 		
